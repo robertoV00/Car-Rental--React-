@@ -4,7 +4,7 @@ import Model from "./UI/Model";
 import ModelSkeleton from './UI/ModelSkeleton';
 
 
-const VehicleModels = () => {
+const VehicleModels = ({carModels, setCarModels, setBookingOpen}) => {
     const [sort, setSort] = useState("")
     // what ever useState("") that determines what the select statement shows
     function sortModels() {
@@ -21,20 +21,6 @@ const VehicleModels = () => {
             setCarModels(carModels.slice().sort((a, b) => b.rating - a.rating))
         }
     }
-
-    const [carModels, setCarModels] = useState([])
-    async function fetchModels() {
-
-        const {data} = await axios.get("https://car-rental-api.up.railway.app/car")
-        const models = data.data
-        
-        setCarModels(models)
-    }
-    
-    useEffect(() => {
-        fetchModels()
-    }, [])
-    // [] we will only fetch the data once it renders
 
     useEffect(() => {
         sortModels()
@@ -58,7 +44,7 @@ const VehicleModels = () => {
                     </div>
                         <div className="models__list">
                             { carModels.length > 0 ? ( carModels.map((model) =>
-                                <Model model={model} key={model.id}/>
+                                <Model model={model} key={model.id} setBookingOpen={setBookingOpen}/>
                             )) : (
                             new Array(20).fill(0).map((_, index) => <ModelSkeleton key={index}/>)
                         )}
