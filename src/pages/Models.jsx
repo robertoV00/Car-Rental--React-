@@ -5,7 +5,7 @@ import Booking from '../components/Booking';
 import axios from 'axios';
 
 const Models = () => {
-
+    const [selectedModel, setSelectedModel] = useState("")
     const [carModels, setCarModels] = useState([])
     const [bookingOpen, setBookingOpen] = useState(false)
         // [] we will only fetch the data once it renders
@@ -25,9 +25,11 @@ const Models = () => {
 
     return (
         <>
-            <Booking carModels={carModels} bookingOpen={bookingOpen} setBookingOpen={setBookingOpen}/>
+            <Booking carModels={carModels} bookingOpen={bookingOpen} setBookingOpen={setBookingOpen}
+            selectedModel={selectedModel}
+            setSelectedModel={setSelectedModel}/>
             <ModelHero />
-            <VehicleModels carModels={carModels} setCarModels={setCarModels} setBookingOpen={setBookingOpen}/>
+            <VehicleModels carModels={carModels} setCarModels={setCarModels} setBookingOpen={setBookingOpen} setSelectedModel={setSelectedModel} />
         </>
     );
 }

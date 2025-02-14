@@ -4,7 +4,7 @@ import Model from "./UI/Model";
 import ModelSkeleton from './UI/ModelSkeleton';
 
 
-const VehicleModels = ({carModels, setCarModels, setBookingOpen}) => {
+const VehicleModels = ({carModels, setCarModels, setBookingOpen, setSelectedModel}) => {
     const [sort, setSort] = useState("")
     // what ever useState("") that determines what the select statement shows
     function sortModels() {
@@ -44,7 +44,7 @@ const VehicleModels = ({carModels, setCarModels, setBookingOpen}) => {
                     </div>
                         <div className="models__list">
                             { carModels.length > 0 ? ( carModels.map((model) =>
-                                <Model model={model} key={model.id} setBookingOpen={setBookingOpen}/>
+                                <Model model={model} key={model.id} setBookingOpen={setBookingOpen} setSelectedModel={setSelectedModel}/>
                             )) : (
                             new Array(20).fill(0).map((_, index) => <ModelSkeleton key={index}/>)
                         )}

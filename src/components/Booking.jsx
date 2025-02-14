@@ -1,8 +1,13 @@
 import { faCalendar, faCalendarAlt, faCar, faLocation, faLocationDot, faLocationPin, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useState } from 'react';
 
-const Booking = ({carModels, bookingOpen, setBookingOpen}) => {
+const Booking = ({carModels, 
+    bookingOpen, 
+    setBookingOpen, 
+    selectedModel, 
+    setSelectedModel }) => {
+    
     return (
         //if bookingOpen is = true, then open a close of booking-open otherwise don't add anything
         <div className={`booking ${bookingOpen && "booking-open"}`}>
@@ -21,7 +26,7 @@ const Booking = ({carModels, bookingOpen, setBookingOpen}) => {
                                 Select Your Model <span className='required'>*</span>
                             </span>
                         </label>
-                        <select className="form__item__select">
+                        <select value={selectedModel} className="form__item__select" onChange={(event) => setSelectedModel(event.target.value)}>
                             <option value="" disabled>Select</option>
                             {
                                 //access carModels array

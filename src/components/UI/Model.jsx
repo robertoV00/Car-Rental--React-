@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CarModel from "../../assets/model-img.png"
 import { faCar, faCircleCheck, faStar } from "@fortawesome/free-solid-svg-icons";
 
-const Model = ({model, setBookingOpen}) => {
+const Model = ({model, setBookingOpen, setSelectedModel}) => {
   return (
     <div className="model">
       <img src={`https://car-rental-api.up.railway.app/${model.image}`} alt="" className="model__img" />
@@ -31,7 +31,10 @@ const Model = ({model, setBookingOpen}) => {
           <span className="model__detail__text">{model.transmission}</span>
         </div>
       </div>
-      <button className="model__btn" onClick={() => setBookingOpen(true)}>
+      <button className="model__btn" onClick={() => {
+      setSelectedModel(`${model.make} ${model.model}`)
+      setBookingOpen(true)
+      }}>
         <span className="model__btn__span">Book Ride</span>
         <FontAwesomeIcon icon={faCircleCheck} />
       </button>
