@@ -3,6 +3,7 @@ import HeaderBg from "../assets/header-bg.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import HeaderCar from "../assets/header-car.png"
+import { Link } from 'react-router-dom';
 
 
 const Landing = () => {
@@ -22,16 +23,20 @@ const Landing = () => {
                             Rent the car of your dreams. Unbeatable prices, unlimited miles, flexible pickup options, and much more.
                         </p>
                         <div className="header__text__btns">
-                            <button className="header__text__btn header__text__book">
-                                <span className="header__text__btn__span">Book Ride</span>
-                                <FontAwesomeIcon icon={faCircleCheck} className="header__text_btn__icon"/>
-                            </button>
-                            <button className="header__text__btn header__text__learn">
-                                <span className="header__text_btn__span">
-                                    Learn More
-                                </span>
-                                <FontAwesomeIcon icon={faAngleRight} className="header__text__btn__icon"/>
-                            </button>
+                            <Link to="/models">
+                                <button className="header__text__btn header__text__book">
+                                    <span className="header__text__btn__span">Book Ride</span>
+                                    <FontAwesomeIcon icon={faCircleCheck} className="header__text_btn__icon"/>
+                                </button>
+                            </Link>
+                            <Link to="/models">
+                                <button className="header__text__btn header__text__learn">
+                                    <span className="header__text_btn__span">
+                                        Learn More
+                                    </span>
+                                    <FontAwesomeIcon icon={faAngleRight} className="header__text__btn__icon"/>
+                                </button>
+                            </Link>
                         </div>
                     </div>
                     <figure className="header__img__wrapper">

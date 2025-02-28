@@ -2,6 +2,7 @@ import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import NavLogo from "../assets/logo.png";
+import {Link} from "react-router-dom";
 
 const Nav = () => {
 
@@ -11,31 +12,31 @@ const Nav = () => {
         <>
         <nav>
             <div className="nav__container">
-                <a href="" className="nav__img__wrapper">
+                <Link to="/" className="nav__img__wrapper">
                     <img src={NavLogo} alt="" className="nav__img" />
-                </a>
+                </Link>
                 <div className="nav__links">
-                    <a href="" className="nav__link disabled">
+                    <Link to="/" className="nav__link">
                         Home
-                    </a>
-                    <a href="" className="nav__link disabled">
+                    </Link>
+                    <Link to="/models" className="nav__link">
                         Vehicle Models
-                    </a>
-                    <a href="" className="nav__link disabled">
+                    </Link>
+                    <a href="/" className="nav__link">
                         Testimonials
                     </a>
-                    <a href="" className="nav__link disabled">
+                    <a href="/" className="nav__link">
                         Our Team
                     </a>
-                    <a href="" className="nav__link disabled">
+                    <a href="/" className="nav__link">
                         Contact
                     </a>
                 </div>
                 <div className="nav__btns">
-                    <a href="" className="nav__link disabled">
+                    <a href="" className="nav__link">
                         Sign In
                     </a>
-                    <button className="nav__btns__register disabled">
+                    <button className="nav__btns__register">
                         Register
                     </button>
                 </div>
@@ -54,19 +55,19 @@ const Nav = () => {
                 <FontAwesomeIcon icon={faTimes}/>
             </button>
             <div className="menu__links">
-                <a href="#" className="menu__link disabled" onClick={() => setMenuOpen(false)}>
+                <Link to="/" className="menu__link" onClick={() => setMenuOpen(false)}>
                     Home
-                </a>
-                <a href="#" className="menu__link disabled" onClick={() => setMenuOpen(false)}>
+                </Link>
+                <Link to="/models" className="menu__link" onClick={() => setMenuOpen(false)}>
                     Vehicle Models
-                </a>
-                <a href="#" className="menu__link disabled" onClick={() => setMenuOpen(false)}>
+                </Link>
+                <a href="#" className="menu__link" onClick={() => setMenuOpen(false)}>
                     Testimonials
                 </a>
-                <a href="#" className="menu__link disabled" onClick={() => setMenuOpen(false)}>
+                <a href="#" className="menu__link" onClick={() => setMenuOpen(false)}>
                     Our Teams
                 </a>
-                <a href="#" className="menu__link disabled" onClick={() => setMenuOpen(false)}>
+                <a href="#" className="menu__link" onClick={() => setMenuOpen(false)}>
                     Contact
                 </a>
             </div>

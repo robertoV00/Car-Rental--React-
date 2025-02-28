@@ -1,13 +1,33 @@
-import { faCalendar, faCalendarAlt, faCar, faLocation, faLocationDot, faLocationPin, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar, faCalendarAlt, faCar, faLocation, faLocationDot, faLocationPin, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 
-const Booking = ({carModels, 
+const Booking = ({
+    carModels, 
     bookingOpen, 
     setBookingOpen, 
     selectedModel, 
-    setSelectedModel }) => {
+    setSelectedModel,
+    setSuccessOpen, }) => {
+
+    const [bookingLoading, setBookingLoading] = useState(false)
     
+    function handleSubmit(event) {
+        event.preventDefault() //this prevents the refreshing
+
+        setBookingLoading(true)
+        
+        setTimeout(() => {
+            setBookingLoading(false)
+            setBookingOpen(false)
+            setSuccessOpen(true)
+        }, 2000)
+
+        setTimeout(() => {
+            setSuccessOpen(false)
+        }, 6000)
+    }
+
     return (
         //if bookingOpen is = true, then open a close of booking-open otherwise don't add anything
         <div className={`booking ${bookingOpen && "booking-open"}`}>
@@ -18,7 +38,7 @@ const Booking = ({carModels,
                 <h3 className="booking__title">
                     Book a Car
                 </h3>
-                <form action="" className="booking__form">
+                <form action="" className="booking__form" onSubmit={(event) => handleSubmit(event)}>
                     <div className="form__item">
                         <label htmlFor="" className="form__item__label">
                             <FontAwesomeIcon icon={faCar}/>
@@ -89,7 +109,11 @@ const Booking = ({carModels,
                     </div>
                     <div className="form__item">
                         <button className="form__item__submit">
-                            Book Ride
+                            {
+                                bookingLoading ? <FontAwesomeIcon icon={faSpinner}
+                                className='form__item__submit__loading'/> : ("Book Ride")
+
+                        }
                         </button>
                     </div>
                 </form>
